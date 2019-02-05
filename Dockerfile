@@ -21,13 +21,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-get -y autoremove \
         && \
     rm -rf /var/lib/apt/lists/*
-RUN pip install --upgrade pip \
-    pip install tensorflow \
-    pip install 'pyqt<5' \
-    sudo apt-get install libxext6 libsm6 libxrender1 git curl
 
-RUN git config --global user.email "gpsunicamp016@gmail.com" \
-    git config --global user.name "gpspelle"
+RUN sudo apt-get update && apt-get upgrade
+RUN sudo apt-get install -y libxext6 libsm6 libxrender1 git curl python3-pip python3-pyqt4
+
+RUN pip3 install --upgrade pip
+RUN pip3 install tensorflow
+
+RUN git config --global user.email "gpsunicamp016@gmail.com"
+RUN git config --global user.name "gpspelle"
 # Get CNTK Binary Distribution
 RUN CNTK_VERSION_DASHED=$(echo $CNTK_VERSION | tr . -) && \
     ([ "$CNTK_VERSION" != "2.4" ] || VERIFY_SHA256="true") && \
