@@ -22,11 +22,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         && \
     rm -rf /var/lib/apt/lists/*
 
-RUN sudo apt-get update && apt-get upgrade
+RUN sudo apt-get update && apt-get upgrade -y
 RUN sudo apt-get install -y libxext6 libsm6 libxrender1 git curl python3-pip python3-pyqt4
 
 RUN pip3 install --upgrade pip
-RUN pip3 install tensorflow
+RUN pip install --upgrade pip
+RUN python3 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.0-py3-none-any.whl
 
 RUN git config --global user.email "gpsunicamp016@gmail.com"
 RUN git config --global user.name "gpspelle"
