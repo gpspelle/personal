@@ -71,11 +71,9 @@ RUN cd models/research && protoc ./object_detection/protos/*.proto --python_out=
 # # From tensorflow/models/research/
 RUN echo 'export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim' >> ~/.bashrc
 
-RUN git clone https://github.com/gpspelle/Fall_detection
-RUN git clone https://github.com/gpspelle/personal
+RUN git clone https://github.com/gpspelle/Fall_detection && cd Fall_detection && git pull origin master && cd ..
+RUN git clone https://github.com/gpspelle/personal && cd personal && git pull origin master && cd ..
 RUN cp personal/.vimrc ~/
-
-RUN echo "VAI MERDA"
 
 #RUN jupyter notebook --generate-config
 
